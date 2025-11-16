@@ -885,13 +885,11 @@ function trialRoutineEnd(snapshot) {
     psychoJS.experiment.addData('image_shown', image);                   // путь к файлу
     
     // === ОТВЕТЫ НА СЛАЙДЕРЫ ===
-    psychoJS.experiment.addData('emotionality', (emotionality?.getRating() ?? 'NA'));
-psychoJS.experiment.addData('useful',       (useful?.getRating()       ?? 'NA'));
-psychoJS.experiment.addData('cred',         (cred?.getRating()         ?? 'NA'));
-psychoJS.experiment.addData('share',        (share?.getRating()        ?? 'NA'));
-
-// Сохранить/завершить запись для текущей строки
-psychoJS.experiment.nextEntry();
+    
+    psychoJS.experiment.addData('emotionality', (typeof emotionality !== 'undefined' && emotionality.getRating() !== undefined));
+    psychoJS.experiment.addData('useful', (typeof useful !== 'undefined' && useful.getRating() !== undefined));
+    psychoJS.experiment.addData('cred', (typeof cred !== 'undefined' && cred.getRating() !== undefined));
+    psychoJS.experiment.addData('share', (typeof share !== 'undefined' && share.getRating() !== undefined));
     
     // === СОХРАНЕНИЕ ЗАПИСИ ===
     psychoJS.experiment.nextEntry();
