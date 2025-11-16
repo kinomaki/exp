@@ -81,7 +81,7 @@ psychoJS.start({
   expInfo: expInfo,
   resources: [
     // resources:
-    {'name': 'all_conditions.xlsx', 'path': 'all_conditions.xlsx'},
+    {'name': 'all_conditions.csv', 'path': 'all_conditions.csv'},
     {'name': 'stimuli/rel_neu_min.png', 'path': 'stimuli/rel_neu_min.png'},
     {'name': 'stimuli/rel_poz_min.png', 'path': 'stimuli/rel_poz_min.png'},
     {'name': 'stimuli/rel_neg_min.png', 'path': 'stimuli/rel_neg_min.png'},
@@ -868,7 +868,7 @@ function stimLoopLoopBegin(stimLoopLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
-      trialList: 'all_conditions.xlsx',
+      trialList: 'all_conditions.csv',
       seed: undefined, name: 'stimLoop'
     });
     psychoJS.experiment.addLoop(stimLoop); // add the loop to the experiment
