@@ -100,7 +100,6 @@ psychoJS.start({
     {'name': 'stimuli/fin_neu_max.png', 'path': 'stimuli/fin_neu_max.png'},
     {'name': 'stimuli/fin_poz_max.png', 'path': 'stimuli/fin_poz_max.png'},
     {'name': 'stimuli/fin_neg_max.png', 'path': 'stimuli/fin_neg_max.png'},
-    {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
   ]
 });
 
