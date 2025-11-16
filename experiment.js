@@ -547,7 +547,7 @@ async function experimentInit() {
   thank_you = new visual.TextStim({
     win: psychoJS.window,
     name: 'thank_you',
-    text: '\nСПАСИБО ЗА УЧАСТИЕ!\n\nВы только что завершили исследование\n«Влияние количества лайков и эмоциональной окраски постов на их восприятие».\n\nНастоящая цель:\nМы изучали, как:\n• количество лайков\n• тон поста\n• тема\nвлияют на восприятие полезности, достоверности и желания поделиться.\n\nМы скрыли это в согласии, чтобы избежать предвзятости ответов.\n\nВаши данные полностью анонимны и будут использованы только в научных целях.\n\nЕсли у вас остались вопросы — пишите:\nmvgorobets@edu.hse.ru\n\nАвторы:\nГоробец Максим\nСалахетдинова Самира\n\nЕще раз спасибо!\nНажмите ПРОБЕЛ, чтобы завершить.',
+    text: '\nСПАСИБО ЗА УЧАСТИЕ!\n\nВы только что завершили исследование\n«Влияние количества лайков и эмоциональной окраски постов на их восприятие».\nМы изучали, как количество лайков влияет на восприятие эмоциональных постов.\n\nМы скрыли это в согласии, чтобы избежать предвзятости ответов.\n\nВаши данные полностью анонимны и будут использованы только в научных целях.\n\nЕсли у вас остались вопросы — пишите:\nmvgorobets@edu.hse.ru\n\nАвторы:\nГоробец Максим\nСалахетдинова Самира\n\nЕще раз спасибо!\nНажмите ПРОБЕЛ, чтобы завершить.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.03,  wrapWidth: undefined, ori: 0.0,
@@ -885,10 +885,28 @@ function trialRoutineEnd(snapshot) {
     psychoJS.experiment.addData('image_shown', image);                   // путь к файлу
     
     // === ОТВЕТЫ НА СЛАЙДЕРЫ ===
-    psychoJS.experiment.addData('emotionality', (typeof emotionality !== 'undefined' && emotionality.getRating() !== undefined) ? emotionality.getRating() : 'NA');
-    psychoJS.experiment.addData('useful', (typeof useful !== 'undefined' && useful.getRating() !== undefined) ? useful.getRating() : 'NA');
-    psychoJS.experiment.addData('cred', (typeof cred !== 'undefined' && cred.getRating() !== undefined) ? cred.getRating() : 'NA');
-    psychoJS.experiment.addData('share', (typeof share !== 'undefined' && share.getRating() !== undefined) ? share.getRating() : 'NA');
+    psychoJS.experiment.addData('emotionality', (typeof emotionality !== 'undefined' && emotionality.getRating() !== undefined) ? emotionality.getRating() : 'function safeRating(component) {
+  try {
+    if (!component) return 'NA';
+    if (typeof component.getRating !== 'function') return 'NA';
+    const val = component.getRating();
+    // допускаем 0 как валидный ответ — только null/undefined/NaN превращаем в 'NA'
+    if (val === null || val === undefined) return 'NA';
+    if (typeof val === 'number' && Number.isNaN(val)) return 'NA';
+    return val;
+  } catch (e) {
+    return 'NA';
+  }
+}
+
+// Использование
+psychoJS.experiment.addData('emotionality', safeRating(emotionality));
+psychoJS.experiment.addData('useful',       safeRating(useful));
+psychoJS.experiment.addData('cred',         safeRating(cred));
+psychoJS.experiment.addData('share',        safeRating(share));
+
+// затем записать строку
+psychoJS.experiment.nextEntry();');
     
     // === СОХРАНЕНИЕ ЗАПИСИ ===
     psychoJS.experiment.nextEntry();
