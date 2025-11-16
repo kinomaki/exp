@@ -886,10 +886,10 @@ function trialRoutineEnd(snapshot) {
     
     // === ОТВЕТЫ НА СЛАЙДЕРЫ ===
     
-    psychoJS.experiment.addData('emotionality', (typeof emotionality !== 'undefined' && emotionality.getRating() !== undefined));
-    psychoJS.experiment.addData('useful', (typeof useful !== 'undefined' && useful.getRating() !== undefined));
-    psychoJS.experiment.addData('cred', (typeof cred !== 'undefined' && cred.getRating() !== undefined));
-    psychoJS.experiment.addData('share', (typeof share !== 'undefined' && share.getRating() !== undefined));
+    psychoJS.experiment.addData('emotionality', (typeof emotionality !== 'undefined' && emotionality.getRating() !== undefined) ? emotionality.getRating() : 'NA');
+    psychoJS.experiment.addData('useful', (typeof useful !== 'undefined' && useful.getRating() !== undefined) ? useful.getRating() : 'NA');
+    psychoJS.experiment.addData('cred', (typeof cred !== 'undefined' && cred.getRating() !== undefined) ? cred.getRating() : 'NA');
+    psychoJS.experiment.addData('share', (typeof share !== 'undefined' && share.getRating() !== undefined) ? share.getRating() : 'NA');
     
     // === СОХРАНЕНИЕ ЗАПИСИ ===
     psychoJS.experiment.nextEntry();
