@@ -877,21 +877,21 @@ function trialRoutineEnd(snapshot) {
     }
     // Run 'End Routine' code from code_5
     // === МЕТАДАННЫЕ ЭКСПЕРИМЕНТА ===
-    thisExp.addData('participant', expInfo['participant']);  // ID участника
-    thisExp.addData('date', expInfo['date']);                // дата сессии
-    thisExp.addData('theme', theme);                         // relations / ai / finance
-    thisExp.addData('tone', tone);                           // neutral / positive / negative
-    thisExp.addData('likes', likes);                         // low / mid / high
-    thisExp.addData('image_shown', image);                   // путь к файлу
+    psychoJS.experiment.addData('participant', expInfo['participant']);  // ID участника
+    psychoJS.experiment.addData('date', expInfo['date']);                // дата сессии
+    psychoJS.experiment.addData('theme', theme);                         // relations / ai / finance
+    psychoJS.experiment.addData('tone', tone);                           // neutral / positive / negative
+    psychoJS.experiment.addData('likes', likes);                         // low / mid / high
+    psychoJS.experiment.addData('image_shown', image);                   // путь к файлу
     
     // === ОТВЕТЫ НА СЛАЙДЕРЫ ===
-    thisExp.addData('emotionality', (typeof emotionality !== 'undefined' && emotionality.getRating() !== undefined) ? emotionality.getRating() : 'NA');
-    thisExp.addData('useful', (typeof useful !== 'undefined' && useful.getRating() !== undefined) ? useful.getRating() : 'NA');
-    thisExp.addData('cred', (typeof cred !== 'undefined' && cred.getRating() !== undefined) ? cred.getRating() : 'NA');
-    thisExp.addData('share', (typeof share !== 'undefined' && share.getRating() !== undefined) ? share.getRating() : 'NA');
+    psychoJS.experiment.addData('emotionality', (typeof emotionality !== 'undefined' && emotionality.getRating() !== undefined) ? emotionality.getRating() : 'NA');
+    psychoJS.experiment.addData('useful', (typeof useful !== 'undefined' && useful.getRating() !== undefined) ? useful.getRating() : 'NA');
+    psychoJS.experiment.addData('cred', (typeof cred !== 'undefined' && cred.getRating() !== undefined) ? cred.getRating() : 'NA');
+    psychoJS.experiment.addData('share', (typeof share !== 'undefined' && share.getRating() !== undefined) ? share.getRating() : 'NA');
     
     // === СОХРАНЕНИЕ ЗАПИСИ ===
-    thisExp.nextEntry();
+    psychoJS.experiment.nextEntry();
     if (routineForceEnded) {
         routineTimer.reset();} else if (trialMaxDurationReached) {
         trialClock.add(trialMaxDuration);
@@ -1656,10 +1656,10 @@ function demosRoutineEnd(snapshot) {
     psychoJS.experiment.addData('button.timesOn', button.timesOn);
     psychoJS.experiment.addData('button.timesOff', button.timesOff);
     // Run 'End Routine' code from code_9
-    thisExp.addData('age', ageBox.text);
-    thisExp.addData('gender', genderBox.text);
-    thisExp.addData('platform', platformBox.text);
-    thisExp.addData('hours', hoursBox.text);
+    psychoJS.experiment.addData('age', ageBox.text);
+    psychoJS.experiment.addData('gender', genderBox.text);
+    psychoJS.experiment.addData('platform', platformBox.text);
+    psychoJS.experiment.addData('hours', hoursBox.text);
     // the Routine "demos" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
