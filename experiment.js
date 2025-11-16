@@ -885,28 +885,13 @@ function trialRoutineEnd(snapshot) {
     psychoJS.experiment.addData('image_shown', image);                   // путь к файлу
     
     // === ОТВЕТЫ НА СЛАЙДЕРЫ ===
-    psychoJS.experiment.addData('emotionality', (typeof emotionality !== 'undefined' && emotionality.getRating() !== undefined) ? emotionality.getRating() : 'function safeRating(component) {
-  try {
-    if (!component) return 'NA';
-    if (typeof component.getRating !== 'function') return 'NA';
-    const val = component.getRating();
-    // допускаем 0 как валидный ответ — только null/undefined/NaN превращаем в 'NA'
-    if (val === null || val === undefined) return 'NA';
-    if (typeof val === 'number' && Number.isNaN(val)) return 'NA';
-    return val;
-  } catch (e) {
-    return 'NA';
-  }
-}
+    psychoJS.experiment.addData('emotionality', (emotionality?.getRating() ?? 'NA'));
+psychoJS.experiment.addData('useful',       (useful?.getRating()       ?? 'NA'));
+psychoJS.experiment.addData('cred',         (cred?.getRating()         ?? 'NA'));
+psychoJS.experiment.addData('share',        (share?.getRating()        ?? 'NA'));
 
-// Использование
-psychoJS.experiment.addData('emotionality', safeRating(emotionality));
-psychoJS.experiment.addData('useful',       safeRating(useful));
-psychoJS.experiment.addData('cred',         safeRating(cred));
-psychoJS.experiment.addData('share',        safeRating(share));
-
-// затем записать строку
-psychoJS.experiment.nextEntry();');
+// Сохранить/завершить запись для текущей строки
+psychoJS.experiment.nextEntry();
     
     // === СОХРАНЕНИЕ ЗАПИСИ ===
     psychoJS.experiment.nextEntry();
