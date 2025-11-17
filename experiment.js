@@ -1041,26 +1041,13 @@ function trialRoutineEnd(snapshot) {
     psychoJS.experiment.addData('image_shown', image);                   // путь к файлу
     
     // === ОТВЕТЫ НА СЛАЙДЕРЫ ===
-      if (emotionality && emotionality.getRating() !== undefined) {
-    psychoJS.experiment.addData('emotionality', emotionality.getRating());
-} else {
-    psychoJS.experiment.addData('emotionality', 'NA');
-}
-      if (useful && useful.getRating() !== undefined) {
-    psychoJS.experiment.addData('useful', useful.getRating());
-} else {
-    psychoJS.experiment.addData('useful', 'NA');
-}
-      if (cred && cred.getRating() !== undefined) {
-    psychoJS.experiment.addData('cred', cred.getRating());
-} else {
-    psychoJS.experiment.addData('cred', 'NA');
-}
-      if (share && share.getRating() !== undefined) {
-    psychoJS.experiment.addData('share', share.getRating());
-} else {
-    psychoJS.experiment.addData('share', 'NA');
-}
+у меня не загружаются самые первые результаты эксперимнта, как это исправить
+
+    // === ОТВЕТЫ НА СЛАЙДЕРЫ ===
+    psychoJS.experiment.addData('emotionality', (typeof emotionality !== 'undefined' && emotionality.getRating() !== undefined) ? emotionality.getRating() : 'NA');
+    psychoJS.experiment.addData('useful', (typeof useful !== 'undefined' && useful.getRating() !== undefined) ? useful.getRating() : 'NA');
+    psychoJS.experiment.addData('cred', (typeof cred !== 'undefined' && cred.getRating() !== undefined) ? cred.getRating() : 'NA');
+    psychoJS.experiment.addData('share', (typeof share !== 'undefined' && share.getRating() !== undefined) ? share.getRating() : 'NA');
     
     // === СОХРАНЕНИЕ ЗАПИСИ ===
     psychoJS.experiment.nextEntry();
