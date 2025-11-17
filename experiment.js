@@ -505,7 +505,7 @@ async function experimentInit() {
   // Initialize components for Routine "quiz"
   quizClock = new util.Clock();
   q_final = new visual.TextStim({
-    win: .window,
+    win: psychoJS.window,
     name: 'q_final',
     text: 'Заметили ли Вы влияние лайков на Ваше восприятие текстов?',
     font: 'Arial',
@@ -517,7 +517,7 @@ async function experimentInit() {
   });
   
   button_yes = new visual.ButtonStim({
-    win: .window,
+    win: psychoJS.window,
     name: 'button_yes',
     text: 'yes',
     font: 'Arvo',
@@ -526,7 +526,7 @@ async function experimentInit() {
     padding: null,
     anchor: 'center',
     ori: 0.0,
-    units: .window.units,
+    units: psychoJS.window.units,
     color: 'white',
     fillColor: 'darkgrey',
     borderColor: null,
@@ -541,7 +541,7 @@ async function experimentInit() {
   button_yes.clock = new util.Clock();
   
   button_no = new visual.ButtonStim({
-    win: .window,
+    win: psychoJS.window,
     name: 'button_no',
     text: 'no',
     font: 'Arvo',
@@ -550,7 +550,7 @@ async function experimentInit() {
     padding: null,
     anchor: 'center',
     ori: 0.0,
-    units: .window.units,
+    units: psychoJS.window.units,
     color: 'white',
     fillColor: 'darkgrey',
     borderColor: null,
@@ -567,7 +567,7 @@ async function experimentInit() {
   // Initialize components for Routine "thanks"
   thanksClock = new util.Clock();
   thank_you = new visual.TextStim({
-    win: .window,
+    win: psychoJS.window,
     name: 'thank_you',
     text: '\nСПАСИБО ЗА УЧАСТИЕ!\n\nВы только что завершили исследование\n«Влияние количества лайков и эмоциональной окраски постов на их восприятие».\n\nНастоящая цель:\nМы изучали, как количество лайков влияет на восприятие эмоциональных постов.\n\nМы скрыли это в согласии, чтобы избежать предвзятости ответов.\n\nВаши данные полностью анонимны и будут использованы только в научных целях.\n\nЕсли у вас остались вопросы — пишите:\nmvgorobets@edu.hse.ru\n\nАвторы:\nГоробец Максим\nСалахетдинова Самира\n\nЕще раз спасибо!\n\nНажмите ПРОБЕЛ, чтобы завершить.',
     font: 'Arial',
@@ -578,7 +578,7 @@ async function experimentInit() {
     depth: 0.0 
   });
   
-  thanks_enter = new core.Keyboard({: , clock: new util.Clock(), waitForStart: true});
+  thanks_enter = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Create some handy timers
   globalClock = new util.Clock();  // to track the time since experiment started
@@ -613,7 +613,7 @@ function AgreementRoutineBegin(snapshot) {
     agree_enter.keys = undefined;
     agree_enter.rt = undefined;
     _agree_enter_allKeys = [];
-    .experiment.addData('Agreement.started', globalClock.getTime());
+    psychoJS.experiment.addData('Agreement.started', globalClock.getTime());
     AgreementMaxDuration = null
     // keep track of which components have finished
     AgreementComponents = [];
@@ -622,7 +622,7 @@ function AgreementRoutineBegin(snapshot) {
     
     for (const thisComponent of AgreementComponents)
       if ('status' in thisComponent)
-        thisComponent.status = .Status.NOT_STARTED;
+        thisComponent.status = psychoJS.Status.NOT_STARTED;
     return Scheduler.Event.NEXT;
   }
 }
@@ -637,7 +637,7 @@ function AgreementRoutineEachFrame() {
     // update/draw components on each frame
     
     // *agree* updates
-    if (t >= 0.0 && agree.status === .Status.NOT_STARTED) {
+    if (t >= 0.0 && agree.status === psychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
       agree.tStart = t;  // (not accounting for frame time here)
       agree.frameNStart = frameN;  // exact frame index
@@ -647,24 +647,24 @@ function AgreementRoutineEachFrame() {
     
     
     // if agree is active this frame...
-    if (agree.status === .Status.STARTED) {
+    if (agree.status === PsychoJS.Status.STARTED) {
     }
     
     
     // *agree_enter* updates
-    if (t >= 0.0 && agree_enter.status === .Status.NOT_STARTED) {
+    if (t >= 0.0 && agree_enter.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
       agree_enter.tStart = t;  // (not accounting for frame time here)
       agree_enter.frameNStart = frameN;  // exact frame index
       
       // keyboard checking is just starting
-      .window.callOnFlip(function() { agree_enter.clock.reset(); });  // t=0 on next screen flip
-      .window.callOnFlip(function() { agree_enter.start(); }); // start on screen flip
-      .window.callOnFlip(function() { agree_enter.clearEvents(); });
+      PsychoJS.window.callOnFlip(function() { agree_enter.clock.reset(); });  // t=0 on next screen flip
+      PsychoJS.window.callOnFlip(function() { agree_enter.start(); }); // start on screen flip
+      PsychoJS.window.callOnFlip(function() { agree_enter.clearEvents(); });
     }
     
     // if agree_enter is active this frame...
-    if (agree_enter.status === .Status.STARTED) {
+    if (agree_enter.status === PsychoJS.Status.STARTED) {
       let theseKeys = agree_enter.getKeys({keyList: 'space', waitRelease: false});
       _agree_enter_allKeys = _agree_enter_allKeys.concat(theseKeys);
       if (_agree_enter_allKeys.length > 0) {
@@ -1044,11 +1044,26 @@ function trialRoutineEnd(snapshot) {
 у меня не загружаются самые первые результаты эксперимнта, как это исправить
 
     // === ОТВЕТЫ НА СЛАЙДЕРЫ ===
-    psychoJS.experiment.addData('emotionality', (typeof emotionality !== 'undefined' && emotionality.getRating() !== undefined) ? emotionality.getRating() : 'NA');
-    psychoJS.experiment.addData('useful', (typeof useful !== 'undefined' && useful.getRating() !== undefined) ? useful.getRating() : 'NA');
-    psychoJS.experiment.addData('cred', (typeof cred !== 'undefined' && cred.getRating() !== undefined) ? cred.getRating() : 'NA');
-    psychoJS.experiment.addData('share', (typeof share !== 'undefined' && share.getRating() !== undefined) ? share.getRating() : 'NA');
-    
+         if (emotionality && emotionality.getRating() !== undefined) {
+    psychoJS.experiment.addData('emotionality', emotionality.getRating());
+} else {
+    psychoJS.experiment.addData('emotionality', 'NA');
+}
+      if (useful && useful.getRating() !== undefined) {
+    psychoJS.experiment.addData('useful', useful.getRating());
+} else {
+    psychoJS.experiment.addData('useful', 'NA');
+}
+      if (cred && cred.getRating() !== undefined) {
+    psychoJS.experiment.addData('cred', cred.getRating());
+} else {
+    psychoJS.experiment.addData('cred', 'NA');
+}
+      if (share && share.getRating() !== undefined) {
+    psychoJS.experiment.addData('share', share.getRating());
+} else {
+    psychoJS.experiment.addData('share', 'NA');
+}
     // === СОХРАНЕНИЕ ЗАПИСИ ===
     psychoJS.experiment.nextEntry();
     if (routineForceEnded) {
