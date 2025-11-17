@@ -622,7 +622,7 @@ function AgreementRoutineBegin(snapshot) {
     
     for (const thisComponent of AgreementComponents)
       if ('status' in thisComponent)
-        thisComponent.status = psychoJS.Status.NOT_STARTED;
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
     return Scheduler.Event.NEXT;
   }
 }
@@ -637,7 +637,7 @@ function AgreementRoutineEachFrame() {
     // update/draw components on each frame
     
     // *agree* updates
-    if (t >= 0.0 && agree.status === psychoJS.Status.NOT_STARTED) {
+    if (t >= 0.0 && agree.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
       agree.tStart = t;  // (not accounting for frame time here)
       agree.frameNStart = frameN;  // exact frame index
@@ -658,9 +658,9 @@ function AgreementRoutineEachFrame() {
       agree_enter.frameNStart = frameN;  // exact frame index
       
       // keyboard checking is just starting
-      PsychoJS.window.callOnFlip(function() { agree_enter.clock.reset(); });  // t=0 on next screen flip
-      PsychoJS.window.callOnFlip(function() { agree_enter.start(); }); // start on screen flip
-      PsychoJS.window.callOnFlip(function() { agree_enter.clearEvents(); });
+      psychoJS.window.callOnFlip(function() { agree_enter.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { agree_enter.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { agree_enter.clearEvents(); });
     }
     
     // if agree_enter is active this frame...
@@ -1041,10 +1041,7 @@ function trialRoutineEnd(snapshot) {
     psychoJS.experiment.addData('image_shown', image);                   // путь к файлу
     
     // === ОТВЕТЫ НА СЛАЙДЕРЫ ===
-у меня не загружаются самые первые результаты эксперимнта, как это исправить
-
-    // === ОТВЕТЫ НА СЛАЙДЕРЫ ===
-         if (emotionality && emotionality.getRating() !== undefined) {
+    if (emotionality && emotionality.getRating() !== undefined) {
     psychoJS.experiment.addData('emotionality', emotionality.getRating());
 } else {
     psychoJS.experiment.addData('emotionality', 'NA');
@@ -1064,6 +1061,8 @@ function trialRoutineEnd(snapshot) {
 } else {
     psychoJS.experiment.addData('share', 'NA');
 }
+    
+    
     // === СОХРАНЕНИЕ ЗАПИСИ ===
     psychoJS.experiment.nextEntry();
     if (routineForceEnded) {
