@@ -572,7 +572,7 @@ async function experimentInit() {
     text: '\nСПАСИБО ЗА УЧАСТИЕ!\n\nВы только что завершили исследование\n«Влияние количества лайков и эмоциональной окраски постов на их восприятие».\n\nНастоящая цель:\nМы изучали, как количество лайков влияет на восприятие эмоциональных постов.\n\nМы скрыли это в согласии, чтобы избежать предвзятости ответов.\n\nВаши данные полностью анонимны и будут использованы только в научных целях.\n\nЕсли у вас остались вопросы — пишите:\nmvgorobets@edu.hse.ru\n\nАвторы:\nГоробец Максим\nСалахетдинова Самира\n\nЕще раз спасибо!\n\nНажмите ПРОБЕЛ, чтобы завершить.',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], draggable: false, height: 0.03,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], draggable: false, height: 0.02,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: undefined,
     depth: 0.0 
